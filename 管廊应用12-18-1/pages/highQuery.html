@@ -1,0 +1,364 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-18 10:18:45
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>高级查询</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			/* padding: 0 20px; */
+			/* overflow: hidden; */
+		}
+
+		.location-top {
+			/* height: 260px; */
+			width: 100%;
+			border-bottom: 1px solid #ccc;
+			/* margin-top: 10px; */
+		}
+
+
+
+		.location-bottom {
+			height: calc(100vh - 130px);
+			width: 100%;
+			overflow: auto;
+			border: 1px solid #ccc;
+		}
+
+		.layui-form {
+			margin-top: 10px;
+		}
+
+		.layui-form-item {
+			/* display: inline-block; */
+		}
+
+		.layui-table,
+		.layui-table-view {
+			margin-top: 20px;
+		}
+
+		.innerblock {
+			display: inline-block;
+		}
+
+		.query_wrap {
+			padding: 25px;
+		}
+
+		.contrl_btn {
+			margin: 10px 0;
+			position: absolute;
+			top: 25px;
+			right: 25px;
+		}
+
+		.serch_box>div {
+			display: inline-block;
+			vertical-align: top;
+			height: 30px;
+			padding: 5px;
+			line-height: 30px;
+		}
+
+		.serch_box>div>select {
+			display: inline-block;
+			height: 30px;
+			width: 180px;
+			border: 1px solid #CCCCCC;
+		}
+
+		.layui-inline {
+			margin-top: 10px;
+		}
+
+		.search {
+			margin-left: 20px;
+		}
+
+		.suptable {
+			margin-top: 30px;
+		}
+
+		.style_btn {
+			margin: 10px 0;
+			position: absolute;
+			top: 25px;
+			right: 130px;
+		}
+
+		.ruleInput {
+			margin: 10px 0;
+			position: absolute;
+			top: 25px;
+			right: 230px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="query_wrap">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">管架</li>
+				<li>管道</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<div class="layui-inline">
+						<label class="layui-form-label">属性1</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性2</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性3</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性4</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性5</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性6</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-normal layui-btn-sm search">搜索</button>
+					</div>
+					<div class="layui-inline ruleInput">
+						<label class="layui-form-label">间隔规则</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input"
+								placeholder="请输入间隔规则">
+						</div>
+					</div>
+					<div class="style_btn">
+						<button type="button" class="layui-btn layui-btn-normal layui-btn-sm" id="styleSet">样式设置</button>
+					</div>
+					<div class="contrl_btn">
+						<button type="button" class="layui-btn layui-btn-normal layui-btn-sm" id="prindQr">打印二维码</button>
+					</div>
+
+					<table class="layui-hide suptable" id="pipeRack"></table>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">属性1</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性2</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性3</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性4</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性5</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">属性6</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-normal layui-btn-sm search">搜索</button>
+					</div>
+					<table class="layui-hide suptable" id="pipe"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script>
+		// 设备类型:管道
+		// 设备名称:（紧急火炬气）PO/SM装置至紧急火炬
+		// 位号:（紧急火炬气）PO/SM装置至紧急火炬
+		$(function () {
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#pipeRack',
+					url: '../data/hignQuery.json',
+					// height: 510,
+					cols: [
+						[{
+							field: 'index',
+							width: 80,
+							title: '序号',
+							sort: true
+						}, {
+							field: 'mechineType',
+							// width: 100,
+							title: '设备类型'
+						}, {
+							field: 'mechineName',
+							// width: 80,
+							title: '设备名称',
+							sort: true
+						}, {
+							field: 'number',
+							// width: 80,
+							title: '位号'
+						},
+						{
+							field: 'property',
+							// width: 80,
+							title: '属性'
+						}
+						]
+					]
+				});
+			});
+
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#pipe',
+					url: '../data/pipe.json',
+					// height: 510,
+					cols: [
+						[{
+							field: 'index',
+							width: 80,
+							title: '序号',
+							sort: true
+						}, {
+							field: 'mechineType',
+							width: 100,
+							title: '设备类型'
+						}, {
+							field: 'mechineName',
+							// width: 80,
+							title: '设备名称',
+							sort: true
+						}, {
+							field: 'number',
+							// width: 80,
+							title: '位号'
+						},
+						{
+							field: 'property',
+							// width: 80,
+							title: '属性'
+						}
+						]
+					]
+				});
+			});
+
+			$('#prindQr').click(function () {
+				prindIndex = layer.open({
+					type: 2,
+					skin: 'layui-layer-lan',
+					title: '二维码设置',
+					area: ['930px', '650px'],
+					shade: 0,
+					id: 'highQueryId',
+					maxmin: true,
+					scrollbar: true,
+					content: './Print.html',
+					btn: ['确定打印', '取消打印'],
+					skin: 'layui-btn-normal',
+					yes: function () {
+						layer.closeAll();
+						layer.msg('正在打印中...', { icon: 1 });
+					},
+					zIndex: layer.zIndex, //重点1
+					success: function (layero) {
+						layer.setTop(layero); //重点2
+
+					}
+				});
+			})
+			$('#styleSet').click(function () {
+				prindIndex = layer.open({
+					type: 2,
+					skin: 'layui-layer-lan',
+					title: '打印信息',
+					area: ['930px', '650px'],
+					shade: 0,
+					id: 'highQueryId',
+					maxmin: true,
+					scrollbar: true,
+					content: './setting.html',
+					resize: false,
+					btn: ['保存设置', '取消'],
+					skin: 'layui-btn-normal',
+					yes: function () {
+						layer.closeAll();
+						layer.msg('保存样式成功', { icon: 1 });
+					},
+					zIndex: layer.zIndex, //重点1
+					success: function (layero) {
+						layer.setTop(layero); //重点2
+
+					}
+				});
+			})
+		})
+	</script>
+</body>
+
+</html>

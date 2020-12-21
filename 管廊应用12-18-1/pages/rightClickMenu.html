@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+	<title> ZTREE DEMO - select menu</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../lib/ztree/demo.css" type="text/css">
+	<link rel="stylesheet" href="../lib/ztree/zTreeStyle.css" type="text/css">
+
+	<style type="text/css">
+		div#rMenu {
+			position: absolute;
+			visibility: hidden;
+			top: 0;
+			background-color: #555;
+			text-align: left;
+			padding: 2px;
+		}
+
+		div#rMenu ul li {
+			margin: 1px 0;
+			padding: 0 5px;
+			cursor: pointer;
+			list-style: none outside none;
+			background-color: #DFDFDF;
+		}
+
+		#box {
+			width: 200px;
+			height: 200px;
+			background-color: #000;
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>右键菜单的实现</h1>
+	<h6>[ 文件路径: super/rightClickMenu.html ]</h6>
+	<div class="content_wrap">
+		<div class="zTreeDemoBackground left">
+			<ul id="treeDemo" class="ztree"></ul>
+		</div>
+		<div class="right">
+			<ul class="info">
+				<li class="title">
+					<h2>实现方法说明</h2>
+					<ul class="list">
+						<li>利用 beforeRightClick / onRightClick 事件回调函数简单实现的右键菜单</li>
+						<li class="highlight_red">Demo 中的菜单比较简陋，你完全可以配合其他自定义样式的菜单图层混合使用</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="rMenu">
+		<ul>
+			<li id="m_add" onclick="show()">属性查看</li>
+			<li id="m_del" onclick="removeTreeNode();">二维码查看及打印</li>
+			<li id="m_check" onclick="checkTreeNode(true);">剖面图</li>
+		</ul>
+	</div>
+	<div id="box">
+		1211
+	</div>
+</body>
+<script type="text/javascript" src="../lib/jquery.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.excheck.min.js"></script>
+<script type="text/javascript" src="../lib/ztree/jquery.ztree.exedit.min.js"></script>
+<script type="text/javascript">
+
+	var setting = {
+		view: {
+			dblClickExpand: false
+		},
+		check: {
+			enable: true
+		},
+		callback: {
+			onRightClick: OnRightClick
+		}
+	};
+
+	var zNodes = [
+
+		{
+			id: 2, name: "管道", open: true,
+			children: [
+				{ id: 21, name: "FG-901" },
+				{ id: 22, name: "IA-101" },
+				{ id: 23, name: "LPG-21" },
+				{ id: 24, name: "LS-102" }
+			]
+		},
+		{
+			id: 3, name: "管架", open: true,
+			children: [
+				{ id: 31, name: "1-101" },
+				{ id: 32, name: "1-102" },
+				{ id: 33, name: "1-103" },
+				{ id: 34, name: "1-104" }
+			]
+		}
+	];
+
+	function OnRightClick(event, treeId, treeNode) {
+
+		if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+			zTree.cancelSelectedNode();
+			showRMenu("root", event.clientX, event.clientY);
+		} else if (treeNode && !treeNode.noR) {
+			zTree.selectNode(treeNode);
+			showRMenu("node", event.clientX, event.clientY);
+		}
+		var id = treeNode.id;
+		if (id === 2 || id === 3) {
+			console.log('我是父节点');
+		} else if (20 < id) {
+			console.log('我是管道');
+		} else {
+			console.log('我是管架');
+		}
+	}
+
+	function showRMenu(type, x, y) {
+		$("#rMenu ul").show();
+		if (type == "root") {
+			$("#m_del").hide();
+			$("#m_check").hide();
+			$("#m_unCheck").hide();
+		} else {
+			$("#m_del").show();
+			$("#m_check").show();
+			$("#m_unCheck").show();
+		}
+
+		y += document.body.scrollTop;
+		x += document.body.scrollLeft;
+		rMenu.css({ "top": y + "px", "left": x + "px", "visibility": "visible" });
+
+		$("body").bind("mousedown", onBodyMouseDown);
+	}
+	function hideRMenu() {
+		if (rMenu) rMenu.css({ "visibility": "hidden" });
+		$("body").unbind("mousedown", onBodyMouseDown);
+	}
+	function onBodyMouseDown(event) {
+		if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length > 0)) {
+			rMenu.css({ "visibility": "hidden" });
+		}
+	}
+
+
+	var zTree, rMenu;
+	$(document).ready(function () {
+		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		zTree = $.fn.zTree.getZTreeObj("treeDemo");
+		rMenu = $("#rMenu");
+	});
+	//-->
+	function show() {
+		$('#box').show()
+	}
+
+</script>
+
+</html>

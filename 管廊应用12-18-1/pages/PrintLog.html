@@ -1,0 +1,217 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-18 09:50:18
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>查询定位</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			/* padding: 0 20px; */
+			overflow: hidden;
+		}
+
+		.print-top {
+			/* height: 260px; */
+			width: 100%;
+			border-bottom: 1px solid #ccc;
+			/* margin-top: 10px; */
+		}
+
+		.layui-table,
+		.layui-table-view {
+			margin: 0;
+		}
+
+		.print-bottom {
+			/* height: calc(100vh - 130px); */
+			/* width: 100%; */
+			overflow: auto;
+			border: 1px solid #ccc;
+		}
+
+		.layui-form-item {
+			/* display: inline-block; */
+		}
+
+		.innerblock {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.print-top {
+			margin-top: 20px;
+		}
+
+		.print-b {
+			margin-top: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="print-top">
+		<!-- <form class="layui-form" action="">
+      <div class="layui-form-item">
+        <label class="layui-form-label">管道编号</label>
+        <div class="layui-input-inline">
+          <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"
+            class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form> -->
+		<form class="layui-form" action="">
+			<div class="layui-form-item innerblock">
+				<div class="layui-inline">
+					<label class="layui-form-label">日期</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="test1" placeholder="请选择时间">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item innerblock">
+				<div class="layui-inline">
+					<label class="layui-form-label">选择用户</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">超级管理员</option>
+							<option value="2">用户1</option>
+							<option value="3">用户2</option>
+							<option value="4">用户3</option>
+							<option value="5">用户4</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item innerblock">
+				<div class="layui-inline">
+					<label class="layui-form-label">批次</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item ">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">搜索</button>
+					<button type="reset" class="layui-btn layui-btn-normal">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="print-bottom">
+
+		<table class="layui-hide" id="printLog-table" lay-filter="test"></table>
+	</div>
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script type="text/html" id="barDemo">
+			<a class="layui-btn layui-btn-primary layui-btn-xs"  lay-event="detail">查看</a>
+</script>
+	<script>
+		$(function () {
+			// 下面表格开始
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#printLog-table',
+					url: '../data/printlog.json',
+					toolbar: true,
+					height: 'full-150',
+					type: 'checkbox',
+					toolbar: false,
+					skin: 'line' //行边框风格
+					,
+					even: true //开启隔行背景
+					,
+					page: true,
+					defaultToolbar: ['filter', 'print', 'exports'],
+					cols: [
+						[{
+							field: 'id',
+							title: '序号'
+						}, {
+							field: 'sex',
+							title: '打印时间'
+						}, {
+							field: 'city',
+							title: '打印人'
+						}, {
+							field: 'style',
+							title: '样式明细'
+						}, {
+							field: 'sign',
+							title: '打印进度'
+						}, {
+							field: 'experience',
+							title: '批次号'
+						}, {
+							fixed: 'right',
+							toolbar: '#barDemo'
+						}]
+					]
+				});
+
+				table.on('tool(test)', function (obj) {
+					var data = obj.data;
+					if (obj.event === 'detail') {
+						// layer.msg('ID：'+ data.id + ' 的查看操作');
+						layer.open({
+							type: 2,
+							skin: 'layui-layer-lan',
+							title: '查看详情',
+							area: ['1150px', '750px'],
+							shade: 0,
+							id: 'checkLogId',
+							maxmin: true,
+							btn: [],
+							content: './checkLog.html',
+							resize: false,
+							zIndex: layer.zIndex //重点1
+							,
+							success: function (layero) {
+								layer.setTop(layero); //重点2
+							}
+						});
+					}
+				});
+			});
+			// 下面表格结束
+
+			layui.use('laydate', function () {
+				var laydate = layui.laydate;
+				laydate.render({
+					elem: '#test1'
+				});
+			});
+
+		})
+	</script>
+</body>
+
+</html>

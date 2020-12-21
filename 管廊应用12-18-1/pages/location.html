@@ -1,0 +1,171 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-16 15:44:42
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询定位</title>
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      /* padding: 0 20px; */
+      overflow: hidden;
+    }
+
+    .location-top {
+      /* height: 260px; */
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+      /* margin-top: 10px; */
+    }
+
+    .layui-table,
+    .layui-table-view {
+      margin: 0;
+    }
+
+    .location-bottom {
+      height: calc(100vh - 130px);
+      width: 100%;
+      overflow: auto;
+      border: 1px solid #ccc;
+    }
+
+    .layui-form {
+      margin-top: 10px;
+    }
+
+    .layui-form-item {
+      /* display: inline-block; */
+    }
+
+    .layui-table,
+    .layui-table-view {
+      margin: 0;
+    }
+
+    .innerblock {
+      display: inline-block;
+    }
+
+    .layui-form-label {
+      width: 100px;
+    }
+
+    .layui-table-view .layui-table {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="location-top">
+
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+      <ul class="layui-tab-title">
+        <!-- <li class="layui-this">按名称</li> -->
+        <li>管道</li>
+        <li>按属性</li>
+
+      </ul>
+      <div class="layui-tab-content">
+        <!-- <div class="layui-tab-item layui-show">
+          <form class="layui-form" action="">
+            <label class="layui-form-label">输入设备名称</label>
+            <div class="layui-input-inline">
+              <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+              <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1">搜索</button>
+              <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+            </div>
+          </form>
+        </div> -->
+        <div class="layui-tab-item layui-show">
+          <form class="layui-form" action="">
+            <label class="layui-form-label">输入设备类型</label>
+            <div class="layui-input-inline">
+              <select name="modules" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+                <option value="1">管道</option>
+                <option value="2">管架</option>
+              </select>
+            </div>
+            <div class="layui-input-inline">
+              <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1">搜索</button>
+              <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+              <button type="button" class="layui-btn   layui-btn-normal " id="batchPrint">批量打印</button>
+            </div>
+          </form>
+        </div>
+        <div class="layui-tab-item">
+          <form class="layui-form" action="">
+            <label class="layui-form-label">输入设备属性</label>
+            <div class="layui-input-inline">
+              <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+              <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1">搜索</button>
+              <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+              <button type="button" class="layui-btn   layui-btn-normal ">批量打印</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="location-bottom">
+    <table class="layui-hide" id="location-table"></table>
+  </div>
+
+  <script src="../lib/jquery.js"></script>
+  <script src="../lib/layui/layui.all.js"></script>
+  <script>
+    $(function () {
+      // 下面表格开始
+      layui.use('table', function () {
+        var table = layui.table;
+        table.render({
+          elem: '#location-table'
+          , url: '../data/guandao.json'
+          , toolbar: true
+          , height: 400
+          , height: 'full-130'
+          , type: 'checkbox'
+          , toolbar: false
+          , skin: 'line' //行边框风格
+          , even: true //开启隔行背景
+          , page: true
+          , defaultToolbar: ['filter', 'print', 'exports']
+          , cols: [[
+            , { field: 'id', width: '10%', title: '序号', sort: true }
+            , { field: 'username', width: '50%', title: '设备名称' }
+            , { field: 'sex', width: '40%', title: '设备类型' }
+
+          ]]
+
+        });
+      });
+      // 下面表格结束
+
+      $(document).on('click', '#printAll', function () {
+
+        console.log('2');
+      })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 1,
+      "username": "民用液化气）炼厂至PO",
+      "sex": "2020-12-15",
+      "city": "超级管理员",
+      "sign": "100/100",
+      "style":"样式一",
+      "experience": 1
+    },
+    {
+      "id": 2,
+      "username": "（重醇燃料）镇利化学中间O",
+      "sex": "2020-12-15",
+      "city": "用户A",
+      "sign": "100/100",
+       "style":"样式一",
+      "experience": 2
+    },
+    {
+      "id": 3,
+      "username": "民用液化气）炼厂至PO",
+      "sex": "2020-12-15",
+      "city": "超级管理员",
+      "sign": "100/100",
+       "style":"样式一",
+      "experience": 3
+    },
+    {
+      "id": 4,
+      "username": "民用液化气）炼厂至PO",
+      "sex": "2020-12-15",
+      "city": "用户B",
+      "sign": "100/100",
+       "style":"样式二",
+      "experience": 4
+    },
+    {
+      "id": 5,
+      "username": "（污泥）乙烯净化水厂至污",
+      "sex": "2020-12-15",
+      "city": "用户C",
+      "sign": "100/100",
+       "style":"样式二",
+      "experience": 5
+    },
+    {
+      "id": 6,
+      "username": "民用液化气）炼厂至PO",
+      "sex": "2020-12-15",
+      "city": "用户D",
+      "sign": "100/100",
+       "style":"样式一",
+      "experience": 6
+    },
+    {
+      "id": 7,
+      "username": "（污泥）乙烯净化水厂至污",
+      "sex": "2020-12-15",
+      "city": "超级管理员",
+      "sign": "100/100",
+       "style":"样式二",
+      "experience": 7
+    }
+  ]
+}

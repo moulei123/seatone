@@ -1,0 +1,243 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-17 17:15:06
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>查询定位</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			/* padding: 0 20px; */
+			overflow: hidden;
+		}
+
+		.print-top {
+			/* height: 260px; */
+			width: 100%;
+			border-bottom: 1px solid #ccc;
+			/* margin-top: 10px; */
+		}
+
+		.layui-table,
+		.layui-table-view {
+			margin: 0;
+		}
+
+		.print-bottom {
+			height: calc(100vh - 120px);
+			/* width: 100%; */
+			overflow: auto;
+			border: 1px solid #ccc;
+		}
+
+		.layui-form-item {
+			/* display: inline-block; */
+		}
+
+		.innerblock {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+
+
+		.print-b {
+			margin-top: 15px;
+		}
+
+		.printAll {
+			float: right;
+		}
+
+		.rule {
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 20px;
+		}
+
+		.print-bottom {
+			text-align: center;
+
+		}
+
+		.demo-transfer {
+			margin-top: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="print-top">
+		<!-- <form class="layui-form" action="">
+      <div class="layui-form-item">
+        <label class="layui-form-label">管道编号</label>
+        <div class="layui-input-inline">
+          <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"
+            class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form> -->
+		<form class="layui-form" action="">
+
+			<div class="gallery-bottom">
+				<!-- <table class="layui-hide" id="threesTable"></table> -->
+				<table class="layui-table">
+					<colgroup>
+						<col width="150">
+						<col width="200">
+						<col>
+					</colgroup>
+					<thead>
+
+					</thead>
+					<tbody>
+						<tr>
+							<td>打印时间</td>
+							<td>2020-12-15</td>
+						</tr>
+						<tr>
+							<td>打印人</td>
+							<td>超级管理员</td>
+						</tr>
+						<tr>
+							<td>样式明细</td>
+							<td>样式一</td>
+						</tr>
+						<tr>
+							<td>间隔规则</td>
+							<td>2</td>
+						</tr>
+					</tbody>
+				</table>
+		</form>
+	</div>
+	<div class="print-bottom">
+
+		<!-- <table class="layui-hide" id="printLog-table"></table> -->
+		<!-- <div class="layui-form-item rule">
+				<label class="layui-form-label">打印规则</label>
+				<div class="layui-input-inline ">
+					<input type="text" name="username" lay-verify="required" placeholder="请输入打印规则" autocomplete="off" class="layui-input ">
+				</div>
+				<button type="button" class="layui-btn   layui-btn-normal printAll" id="batchPrint">确定打印</button>
+			</div> -->
+
+
+		<div id="test4" class="demo-transfer"></div>
+	</div>
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script>
+		$(function () {
+			// 下面表格开始
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#printLog-table',
+					url: '../data/printInfo.json',
+					toolbar: true,
+					type: 'checkbox',
+					height: 400,
+					toolbar: false,
+					skin: 'line' //行边框风格
+					,
+					even: true //开启隔行背景
+					,
+					page: true,
+					defaultToolbar: ['filter', 'print', 'exports'],
+					cols: [
+						[{
+							type: 'checkbox'
+						},
+						{
+							field: 'id',
+							title: '序号'
+						}, {
+							field: 'username',
+							title: '设备类型'
+						}, {
+							field: 'sex',
+							title: '管架名称'
+						}, {
+							field: 'city',
+							title: '位号'
+						}, {
+							field: 'style',
+							title: '属性'
+						}
+
+						]
+					]
+				});
+			});
+			// 下面表格结束
+
+			layui.use('laydate', function () {
+				var laydate = layui.laydate;
+				laydate.render({
+					elem: '#test6',
+					range: true
+				});
+			});
+
+
+
+
+			layui.use(['transfer', 'layer', 'util'], function () {
+				var $ = layui.$
+					, transfer = layui.transfer
+					, layer = layui.layer
+					, util = layui.util;
+
+				//模拟数据
+				var data1 = [
+					{ "value": "1", "title": "1-101" }
+					, { "value": "2", "title": "1-102" }
+					, { "value": "3", "title": "1-103" }
+					, { "value": "4", "title": "1-104" }
+					, { "value": "5", "title": "1-105" }
+					, { "value": "6", "title": "1-106" }
+					, { "value": "7", "title": "1-107" }
+					, { "value": "8", "title": "1-108" }
+					, { "value": "9", "title": "1-109" }
+					, { "value": "5", "title": "1-110" }
+					, { "value": "6", "title": "1-111" }
+					, { "value": "7", "title": "1-112" }
+					, { "value": "8", "title": "1-113" }
+					, { "value": "9", "title": "1-114" }
+				]
+
+
+				//实例调用
+				transfer.render({
+					elem: '#test4'
+					, data: data1
+					, title: ['管架信息', '打印信息']
+					, showSearch: true
+					, value: ["1", "3", "5"]
+				})
+			});
+		})
+	</script>
+</body>
+
+</html>

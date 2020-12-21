@@ -1,0 +1,94 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-16 17:28:49
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管道信息</title>
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <style>
+    html,
+    body,
+    .layui-tab-content {
+      height: 100%;
+    }
+
+    .layui-tab {
+      margin: 0;
+    }
+
+    .layui-tab-content {
+      padding: 0;
+    }
+
+    .layui-table,
+    .layui-table-view {
+      margin: 0;
+    }
+
+    .profile {
+      height: 100%;
+    }
+
+    .printBtn {
+      padding: 30px;
+      float: right;
+
+    }
+
+    .profile-top {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profileMap {
+      height: 100%;
+    }
+
+    .qr-box img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .qr-box {
+      width: 300px;
+      height: 300px;
+      background: url(../images/qr-bd.png) no-repeat;
+      transform: translate(-100%, 50%);
+      background-size: 100%;
+    }
+
+    .layui-btn {
+      position: absolute;
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="printBtn">
+    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius " id="print">打印二维码</button>
+    <!-- startprint -->
+    <div class="qr-box">
+      <img src="../images/qr.png" alt="">
+    </div>
+    <!-- endprint -->
+  </div>
+  <script src="../lib/layui/layui.all.js"></script>
+  <script>
+
+  </script>
+</body>
+
+</html>

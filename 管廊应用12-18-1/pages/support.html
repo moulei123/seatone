@@ -1,0 +1,296 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-16 17:37:18
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>管道信息</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body,
+		.layui-tab-content {
+			height: 100%;
+		}
+
+		.layui-tab {
+			margin: 0;
+		}
+
+		.layui-tab-content {
+			padding: 0;
+		}
+
+		.layui-table,
+		.layui-table-view {
+			margin: 0;
+		}
+
+		.printBtn {
+			padding: 30px;
+			float: right;
+
+		}
+
+		.profile-top {
+			text-align: center;
+			margin-bottom: 38px;
+		}
+
+		.profileMap {
+			height: 100%;
+		}
+
+		.qr-box img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.qr-box {
+			width: 300px;
+			height: 300px;
+			background: url(../images/qr-bd.png) no-repeat;
+			transform: translate(-70%, 45%);
+			background-size: 100%;
+		}
+
+		.layui-btn {
+			position: absolute;
+			right: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 剖面图 -->
+	<div class="profileMap">
+		<div class="profile-top">
+			<img src="../images/svg.png" alt="">
+		</div>
+		<div class="profile">
+			<div class="layui-tab">
+				<ul class="layui-tab-title">
+					<li class="layui-this">第1层</li>
+					<li>第2层</li>
+					<li>第3层</li>
+					<li>第4层</li>
+					<li>第5层</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+						<table class="layui-hide" id="viewProp"></table>
+					</div>
+					<div class="layui-tab-item">
+						<table class="layui-hide" id="viewPro"></table>
+					</div>
+					<div class="layui-tab-item">
+						<table class="layui-hide" id="viewPr"></table>
+					</div>
+					<div class="layui-tab-item"></div>
+					<div class="layui-tab-item"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script>
+		(function () {
+			// 属性查看表格开始
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#viewProp',
+					url: '../data/support1.json',
+					toolbar: true,
+					height: 300,
+					toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+					,
+					type: 'checkbox',
+					toolbar: false,
+					skin: 'line' //行边框风格
+					,
+					even: true //开启隔行背景
+					,
+					page: true,
+					defaultToolbar: ['filter', 'print', 'exports'],
+					cols: [
+						[, {
+							field: 'id',
+							title: '序号',
+							fixed: 'left'
+						}, {
+								field: 'username',
+								width: 200,
+								title: '管线编号',
+							}, {
+								field: 'sex',
+								width: 220,
+								title: '设备说明',
+								sort: true
+							}, {
+								field: 'city',
+								width: 80,
+								title: '设备种类'
+							}, {
+								field: 'sign',
+								title: '有效日期',
+								minWidth: 150
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '开始日期',
+								sort: true
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '维护工厂',
+								sort: true
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '公司代码',
+								sort: true
+							}]
+					]
+				});
+			});
+			// 属性查看表格结束
+			// 属性查看表格2开始
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#viewPro',
+					url: '../data/support2.json',
+					toolbar: true,
+					height: 300,
+					toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+					,
+					type: 'checkbox',
+					toolbar: false,
+					skin: 'line' //行边框风格
+					,
+					even: true //开启隔行背景
+					,
+					page: true,
+					defaultToolbar: ['filter', 'print', 'exports'],
+					cols: [
+						[, {
+							field: 'id',
+							title: '序号',
+							fixed: 'left'
+						}, {
+								field: 'username',
+								width: 230,
+								title: '管线编号',
+							}, {
+								field: 'sex',
+								width: 220,
+								title: '设备说明',
+								sort: true
+							}, {
+								field: 'city',
+								width: 80,
+								title: '设备种类'
+							}, {
+								field: 'sign',
+								title: '有效日期',
+								minWidth: 150
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '开始日期',
+								sort: true
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '维护工厂',
+								sort: true
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '公司代码',
+								sort: true
+							}]
+					]
+				});
+			});
+			// 属性查看表格结束
+			// 属性查看表格2开始
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#viewPr',
+					url: '../data/support3.json',
+					toolbar: true,
+
+					toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+					,
+					type: 'checkbox',
+					toolbar: false,
+					skin: 'line' //行边框风格
+					,
+					even: true //开启隔行背景
+					,
+					page: true,
+					defaultToolbar: ['filter', 'print', 'exports'],
+					cols: [
+						[{
+							field: '',
+							type: 'checkbox'
+						}, {
+							field: 'id',
+							title: '序号',
+							fixed: 'left'
+						}, {
+							field: 'username',
+							width: 250,
+							title: '管线编号',
+						}, {
+							field: 'sex',
+							width: 180,
+							title: '设备说明',
+							sort: true
+						}, {
+							field: 'city',
+							width: 80,
+							title: '设备种类'
+						}, {
+							field: 'sign',
+							title: '有效日期',
+							minWidth: 150
+						}, {
+							field: 'experience',
+							width: 80,
+							title: '开始日期',
+							sort: true
+						}, {
+							field: 'experience',
+							width: 80,
+							title: '维护工厂',
+							sort: true
+						}, {
+							field: 'experience',
+							width: 80,
+							title: '公司代码',
+							sort: true
+						}]
+					]
+				});
+			});
+			// 属性查看表格结束
+		})();
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-15 17:21:48
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三维交互</title>
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      /* padding: 0 20px; */
+      overflow: hidden;
+    }
+
+    .threes-top {
+      height: 100px;
+      width: 100%;
+      /* margin-top: 10px; */
+    }
+
+    .layui-table,
+    .layui-table-view {
+      margin: 0;
+    }
+
+    .threes-bottom {
+      margin-top: 30px;
+      height: calc(100vh - 130px);
+      width: 100%;
+      overflow: auto;
+      border: 1px solid #ccc;
+    }
+
+    .layui-col-xs3 {
+      border: 1px solid #ccc;
+      text-align: center;
+      height: 100px;
+      line-height: 100px;
+      margin-right: 10px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .propStat1,
+    .propStat2,
+    .propStat3 {
+      color: rgb(80, 197, 143);
+      font-weight: 600;
+      font-size: 18px;
+      text-shadow: 3px 3px 3px rgb(158, 219, 176);
+    }
+
+    .propStat2 {
+      color: rgb(151, 95, 58);
+      text-shadow: 3px 3px 3px rgb(168, 152, 98);
+    }
+
+    .propStat3 {
+      color: rgb(202, 175, 19);
+      text-shadow: 3px 3px 3px rgb(158, 204, 73);
+    }
+
+    .txt {
+      font-size: 16px;
+      color: #4e5465
+    }
+  </style>
+</head>
+
+<body>
+  <div class="threes-top">
+    <div class="layui-row">
+      <div class="layui-col-xs3">
+        <div class="grid-demo grid-demo-bg1"><span class="txt">属性统计:</span><span class="propStat1">6219条</span></div>
+      </div>
+      <div class="layui-col-xs3">
+        <div class="grid-demo"><span class="txt">数量统计:</span><span class="propStat2">3421条</span></div>
+      </div>
+      <div class="layui-col-xs3">
+        <div class="grid-demo"><span class="txt">属性统计:</span><span class="propStat3">2719条</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="threes-bottom">
+    <table class="layui-hide" id="threes-table"></table>
+  </div>
+  <script src="../lib/jquery.js"></script>
+  <script src="../lib/layui/layui.all.js"></script>
+  <script>
+    $(function () {
+
+      layui.use('table', function () {
+        var table = layui.table;
+        table.render({
+          elem: '#threes-table'
+          , url: '../data/user.json'
+          , toolbar: true
+          , height: 580
+          , height: 'full-140'
+          , type: 'checkbox'
+          , toolbar: false
+          , skin: 'line'
+          , even: true
+          , defaultToolbar: ['filter', 'print', 'exports']
+          , cols: [[
+            , { field: 'id', width: 80, title: '管线号', sort: true }
+            , { field: 'username', width: 80, title: '管段号' }
+            , { field: 'sex', width: 80, title: '管道级别', sort: true }
+            , { field: 'city', width: 80, title: '材料等级' }
+            , { field: 'sign', title: '设计温度', minWidth: 150 }
+            , { field: 'experience', width: 80, title: '设计压力', sort: true }
+            , { field: 'score', width: 80, title: '壁厚', sort: true }
+            , { field: 'classify', width: 80, title: '壁厚等级' }
+            , { field: 'wealth', width: 135, title: '试验介质', sort: true }
+          ]]
+          , page: true
+        });
+      });
+    })
+  </script>
+</body>
+
+</html>

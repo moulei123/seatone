@@ -1,0 +1,67 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 1,
+      "username": "（苯）自中金石化来",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 2,
+      "username": "（民用液化气）炼厂至PO",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 3,
+      "username": "（重醇燃料）镇利化学中间",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 4,
+      "username": "（污泥）乙烯净化水厂至污",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 5,
+      "username": "装置空气东区压力管线",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    }
+  ]
+}

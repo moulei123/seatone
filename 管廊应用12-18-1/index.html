@@ -1,0 +1,296 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-18 09:54:33
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>二维码</title>
+  <link rel="stylesheet" href="./lib/layui/css/layui.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="lib/jqueryMenu/jqx.base.css" />
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo">
+        镇海管廊应用系统
+      </div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item" id="slide"><a href="javascript:;">资产目录</a></li>
+        <li class="layui-nav-item" id="highQuery"><a href="javascript:;">高级查询</a></li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">二维码管理</a>
+          <dl class="layui-nav-child">
+            <dd id="setPrint"><a href="javascript:;">打印设置</a></dd>
+            <dd id="PrintLog"><a href="javascript:;">查看日志</a></dd>
+          </dl>
+        </li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="快速查询" class="layui-input">
+        </li>
+        <li class="layui-nav-item">
+          <i class="layui-icon layui-icon-search searchIcon" id="serchResult"></i>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            管理员
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">修改密码</a></dd>
+            <dd><a href="">退出</a></dd>
+          </dl>
+        </li>
+        <!-- <li class="layui-nav-item help">
+          <i class="layui-icon layui-icon-about"></i>
+        </li> -->
+        <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+      </ul>
+    </div>
+    <!-- 右键弹出菜单 -->
+    <div class="menu_box">
+      <ul>
+        <li><a href="#" id="checkInfo">属性查看</a></li>
+        <li><a href="#" id="structure">管件分布</a></li>
+        <li><a href="#" id="parts">管件统计</a></li>
+      </ul>
+    </div>
+    <div class="menu_box1">
+      <ul>
+        <li><a href="#" id="checkInfoGj">属性查看</a></li>
+        <li><a href="#" class="ercode">二维码查看及打印</a></li>
+        <li><a href="#" id="parts" class="support">剖面图</a></li>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="layui-body" id="body">
+        <!-- 内容主体区域 -->
+        <div class="three">
+          <img src="./images/bg4.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 右键弹出菜单 -->
+
+
+  </div>
+  <div class="open"><img src="images/open.png" alt="点击收起"></div>
+  <div class="nav1">
+    <div class="">
+      <div class="hover_img"><img src="./images/cz.png"></div>
+      <div class="hover_text">模型重载</div>
+    </div>
+    <div class="style1">
+      <div class="hover_img"><img src="./images/zz.png"></div>
+      <div class="hover_text">装置分布图</div>
+    </div>
+    <div>
+      <div class="hover_img"><img src="./images/fd.png"></div>
+      <div class="hover_text">放大</div>
+    </div>
+    <div>
+      <div class="hover_img"><img src="./images/sx.png"></div>
+      <div class="hover_text">缩小</div>
+    </div>
+    <div class="style1">
+      <div class="hover_img"><img src="./images/cl.png"></div>
+      <div class="hover_text">测量</div>
+    </div>
+    <div class="">
+      <div class="hover_img support"><img src="./images/gd.png"></div>
+      <div class="hover_text">管廊剖切</div>
+    </div>
+  </div>
+  <div class="imagebox">
+    <div> <button type="button" class="layui-btn layui-btn-normal" id="gjBtn">管架右键菜单</button></div>
+    <div><button type="button" class="layui-btn layui-btn-normal" id="gdBtn">管道右键菜单</button></div>
+  </div>
+  <div class="attr_view" id="drag">
+    <div class="attr_view_title">
+      <div class="close">×</div>
+    </div>
+    <table class="layui-table">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>属性名</th>
+          <th>属性值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>名称</td>
+          <td>Flang-48973</td>
+
+        </tr>
+        <tr>
+          <td>模版类型</td>
+          <td>2P3Dkjkj-jk</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slideTree1" id="slideTree1">
+    <div class="attr_view_title">
+      <div class="slideTxt">管道信息</div>
+      <div class="close">×</div>
+    </div>
+    <div>
+      <iframe id="if1" src="./pages/gallery.html" width="99%" height="600px"></iframe>
+    </div>
+  </div>
+  <div class="slideTree2" id="slideTree2">
+    <div class="attr_view_title">
+      <div class="slideTxt">管架信息</div>
+      <div class="close">×</div>
+    </div>
+    <div>
+      <iframe id="if2" src="./pages/support.html" width="100%" height="600px"></iframe>
+    </div>
+  </div>
+  <script id=" attrView" type="text/html">
+      <table class="layui-table">
+        <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>属性名</th>
+            <th>属性值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>名称</td>
+            <td>Flang-48973</td>
+
+          </tr>
+          <tr>
+            <td>模版类型</td>
+            <td>2P3Dkjkj-jk</td>
+
+          </tr>
+        </tbody>
+      </table>
+      </script>
+
+
+  <script src="./lib/layui/layui.all.js"></script>
+  <script src="./lib/jquery.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./lib/jqueryMenu/demos.js"></script>
+  <script src="./lib/jqueryMenu/jqxcore.js"></script>
+  <script src="./lib/jqueryMenu/jqxmenu.js"></script>
+  <script src="js/drag.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    $(function () {
+      drag();
+      nav();
+      // $("#menu").jqxMenu({
+      //         width: '120',
+      //         mode: 'vertical'
+      // });
+      rightKey('#gdBtn', ".menu_box")
+      rightKey('#gjBtn', ".menu_box1")
+      document.oncontextmenu = function () {
+        return false;
+      }
+      function rightKey(el, target) {
+        //按下鼠标
+        $(el).mousedown(function (e) {
+          var key = e.which; //获取鼠标键位
+          if (key == 3) //(1:代表左键； 2:代表中键； 3:代表右键)
+          {
+            //获取右键点击坐标
+            var x = e.clientX;
+            var y = e.clientY;
+
+            $(target).show().css({
+              left: x + 20,
+              top: y + 20
+            });
+          }
+        });
+      }
+
+      //点击任意部位隐藏
+      $(document).click(function () {
+        $(".menu_box").hide();
+        $(".menu_box1").hide();
+      })
+      function nav() {
+        var clickNum = 0
+        $('.open').attr('title', "点击收起")
+        $('.open').click(function () {
+          if (clickNum % 2 == 0) {
+            $('.nav1').hide(300)
+            $(this).css('transform', 'rotate(-180deg)')
+            $(this).hover(function () {
+              $(this).attr('title', "点击展开")
+            })
+          } else {
+            $('.nav1').show(300)
+            // $(this).html('点击收起')
+            $(this).css('transform', 'rotate(-360deg)')
+            $(this).hover(function () {
+              $(this).attr('title', "点击收起")
+            })
+
+          }
+          clickNum++;
+        })
+
+        $('.hover_img').hover(function () {
+          $(this).siblings().show(100)
+        }, function () {
+          $(this).siblings().hide(100)
+        })
+
+        $('.nav1>div.style1').click(function () {
+          if ($(this).hasClass('nav_active')) {
+            $(this).removeClass('nav_active')
+          } else {
+            $(this).addClass('nav_active')
+          }
+          // $(this).siblings().removeClass('nav_active')
+        })
+      }
+
+      function drag() {
+        var div = document.getElementById('drag');
+        var slideTree1 = document.getElementById('slideTree1');
+        var slideTree2 = document.getElementById('slideTree2');
+        div.addEventListener("mousedown", mouseMoveHandler);
+        // 关闭
+        $('.close').click(function () {
+          $(this).parent().parent().hide()
+        })
+        slideTree1.addEventListener("mousedown", mouseMoveHandler);
+        slideTree2.addEventListener("mousedown", mouseMoveHandler);
+      }
+
+    })
+
+  </script>
+</body>
+
+</html>

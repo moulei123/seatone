@@ -1,0 +1,161 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-18 09:52:33
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>查看表格详情</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			/* padding: 0 20px; */
+			overflow: hidden;
+		}
+
+		.print-top {
+			/* height: 260px; */
+			width: 100%;
+			height: 100%;
+			border-bottom: 1px solid #ccc;
+			/* margin-top: 10px; */
+		}
+
+		.layui-table,
+		.layui-table-view {
+			margin: 0;
+		}
+
+		.print-bottom {
+			height: calc(100% - 60px);
+			/* width: 100%; */
+			overflow: auto;
+			border: 1px solid #ccc;
+		}
+
+		.layui-form-item {
+			/* display: inline-block; */
+		}
+
+		.innerblock {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.print-top {
+			/* margin-top: 20px; */
+		}
+
+		.print-b {
+			margin-top: 15px;
+		}
+
+		.control_bar {
+			height: 60px;
+			line-height: 60px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="print-top">
+		<div class="print-bottom">
+			<div class="control_bar">
+				<button class="layui-btn layui-btn-normal prints" lay-submit lay-filter="formDemo">继续打印</button>
+				<button type="reset" class="layui-btn layui-btn-normal prints">重新打印</button>
+			</div>
+			<table class="layui-hide" id="printLog-table"></table>
+		</div>
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/layui/layui.all.js"></script>
+		<script>
+			$(function () {
+				// 下面表格开始
+				layui.use('table', function () {
+					var table = layui.table;
+					table.render({
+						elem: '#printLog-table',
+						url: '../data/checkInfo.json',
+						toolbar: true,
+						type: 'checkbox',
+						toolbar: false,
+						skin: 'line' //行边框风格
+						,
+						even: true //开启隔行背景
+						,
+						// page: true,
+						defaultToolbar: ['filter', 'print', 'exports'],
+						cols: [
+							[{
+								field: 'id',
+								title: '序号'
+							}
+								, {
+								field: 'username',
+								title: '管架信息'
+							}, {
+								field: 'sex',
+								title: '打印时间'
+							}, {
+								field: 'city',
+								title: '打印人'
+							}, {
+								field: 'style',
+								title: '样式明细'
+							}, {
+								field: 'experience',
+								title: '批次号'
+							}]
+						]
+					});
+				});
+				// 下面表格结束
+
+				layui.use('laydate', function () {
+					var laydate = layui.laydate;
+					laydate.render({
+						elem: '#test1'
+					});
+				});
+
+
+				$('.prints').click(function () {
+					prindIndex = layer.open({
+						type: 2,
+						skin: 'layui-layer-lan',
+						title: '打印信息',
+						area: ['930px', '650px'],
+						shade: 0,
+						id: 'highQueryId',
+						maxmin: true,
+						scrollbar: true,
+						content: './Print.html',
+						btn: ['确定打印', '取消打印'],
+						skin: 'layui-btn-normal',
+						yes: function () {
+							layer.closeAll();
+							layer.msg('正在打印中...', { icon: 1 });
+						},
+						zIndex: layer.zIndex, //重点1
+						success: function (layero) {
+							layer.setTop(layero); //重点2
+						}
+					});
+				})
+			})
+		</script>
+</body>
+
+</html>

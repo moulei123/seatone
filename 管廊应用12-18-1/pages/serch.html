@@ -1,0 +1,363 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-18 09:18:59
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>搜索结果</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			/* height: 98%; */
+			margin: 0px;
+			/* padding: 0 20px; */
+		}
+
+		.wrap {
+			width: calc(100% - 40px);
+			height: 98%;
+			padding: 20px;
+			overflow-y: auto;
+		}
+
+		.serch_result {
+			/* width: calc(100% - 40px); */
+			/* height: calc(100% - 40px); */
+
+		}
+
+		.mount {
+			width: 80%;
+			height: 35px;
+			line-height: 35px;
+			font-size: 18px;
+			font-weight: 600;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.t_head {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		.t_head>div {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.t_head>div>span:nth-child(odd) {
+			background-color: #bec1cf;
+		}
+
+		.t_head>div>span:nth-child(even) {
+			background-color: #9ea3b8
+		}
+
+		.t_head>div>span {
+			display: inline-block;
+			vertical-align: top;
+			width: 100%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			border-bottom: 1px solid #CCCCCC;
+		}
+
+		/* .t_head>div>span:nth-child(odd){
+				background-color: #F0F0F0;
+			} */
+		.t_body {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		.t_body>div {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.t_body>div>span {
+			display: inline-block;
+			vertical-align: top;
+			width: 100%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			border-bottom: 1px solid #CCCCCC;
+		}
+
+		.t_body>div>span:nth-child(odd) {
+			background-color: #bec1cf;
+		}
+
+		.t_body>div>span:nth-child(even) {
+			background-color: #9ea3b8
+		}
+
+		.list_c {
+			height: 40px;
+			line-height: 40px;
+		}
+
+		.list_c>span {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.list_c>span:nth-child(1) {
+			width: 40px;
+			text-align: center;
+		}
+
+		.t_name {
+			width: 40px;
+			text-align: center;
+			height: 40px;
+			line-height: 40px;
+		}
+
+		.l_item {
+			border-bottom: 1px solid #666666;
+			padding-bottom: 20px;
+		}
+
+		.t_properties {
+			width: 100%;
+		}
+
+		.t_properties>div {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 5px;
+		}
+
+		.t_properties>div>span:nth-child(1) {
+			color: #0088CC;
+			font-size: 16px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="serch_result">
+			<div class="mount">根据**条件,共查询到*条结果</div>
+			<div class="content">
+				<div class="l_item">
+					<div class="list_c"><span>位号:</span><span>2100R</span></div>
+					<div class="list_c"><span>名称:</span><span>2100R</span></div>
+					<div class="list_c"><span>类型:</span><span>变换炉</span></div>
+					<div>
+						<div class="t_name">属性:</div>
+						<div class="t_properties">
+							<div>
+								<span>设备：</span>
+								<span>111100987<span>
+							</div>
+							<div>
+								<span>月份：</span>
+								<span>6</span>
+							</div>
+							<div>
+								<span>种类：</span>
+								<span>S</span>
+							</div>
+							<div>
+								<span>重量：</span>
+								<span>12kg<span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="l_item">
+					<div class="list_c"><span>位号:</span><span>2100R</span></div>
+					<div class="list_c"><span>名称:</span><span>2100R</span></div>
+					<div class="list_c"><span>类型:</span><span>变换炉</span></div>
+					<div>
+						<div class="t_name">属性:</div>
+						<div>
+							<div class="t_properties">
+								<div>
+									<span>设备：</span>
+									<span>111100987<span>
+								</div>
+								<div>
+									<span>月份：</span>
+									<span>6</span>
+								</div>
+								<div>
+									<span>种类：</span>
+									<span>S</span>
+								</div>
+								<div>
+									<span>重量：</span>
+									<span>12kg<span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="l_item">
+					<div class="list_c"><span>位号:</span><span>2100R</span></div>
+					<div class="list_c"><span>名称:</span><span>2100R</span></div>
+					<div class="list_c"><span>类型:</span><span>变换炉</span></div>
+					<div>
+						<div class="t_name">属性:</div>
+						<div>
+							<div class="t_properties">
+								<div>
+									<span>设备：</span>
+									<span>111100987<span>
+								</div>
+								<div>
+									<span>月份：</span>
+									<span>6</span>
+								</div>
+								<div>
+									<span>种类：</span>
+									<span>S</span>
+								</div>
+								<div>
+									<span>重量：</span>
+									<span>12kg<span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="l_item">
+					<div class="list_c"><span>位号:</span><span>2100R</span></div>
+					<div class="list_c"><span>名称:</span><span>2100R</span></div>
+					<div class="list_c"><span>类型:</span><span>变换炉</span></div>
+					<div>
+						<div class="t_name">属性:</div>
+						<div>
+							<div class="t_properties">
+								<div>
+									<span>设备：</span>
+									<span>111100987<span>
+								</div>
+								<div>
+									<span>月份：</span>
+									<span>6</span>
+								</div>
+								<div>
+									<span>种类：</span>
+									<span>S</span>
+								</div>
+								<div>
+									<span>重量：</span>
+									<span>12kg<span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script>
+		$(function () {
+			layui.use('table', function () {
+				var table = layui.table;
+				table.render({
+					elem: '#pipeRack',
+					url: '../data/hignQuery.json',
+					// height: 510,
+					cols: [
+						[{
+							field: 'index',
+							width: 80,
+							title: '序号',
+							sort: true
+						}, {
+							field: 'mechineType',
+							// width: 100,
+							title: '设备类型'
+						}, {
+							field: 'mechineName',
+							// width: 80,
+							title: '设备名称',
+							sort: true
+						}, {
+							field: 'number',
+							// width: 80,
+							title: '位号'
+						},
+						{
+							field: 'property',
+							// width: 80,
+							title: '属性'
+						}
+							// , { fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo' }
+						]
+					]
+				});
+				table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+					layer.open({
+						type: 2,
+						skin: 'layui-layer-lan',
+						title: '管架信息',
+						area: ['630px', '630px'],
+						shade: 0,
+						id: 'galleryId',
+						maxmin: true,
+						btn: [],
+						content: './gallery.html',
+						resize: false,
+						zIndex: layer.zIndex //重点1
+						,
+						success: function (layero) {
+							layer.setTop(layero); //重点2
+						}
+					});
+
+
+				});
+			});
+			$('#batchPrint').click(function () {
+				layer.prompt({
+					title: '输入打印规则，并确认',
+					formType: 3
+				}, function (pass, index) {
+					layer.close(index);
+					// layer.msg('演示完毕！您的口令：'+ pass +'<br>您最后写下了：'+text);
+					prindIndex = layer.open({
+						type: 2,
+						skin: 'layui-layer-lan',
+						title: '打印信息',
+						area: ['930px', '650px'],
+						shade: 0,
+						id: 'highQueryId',
+						maxmin: true,
+						scrollbar: true,
+						content: './Print.html',
+						resize: false,
+						zIndex: layer.zIndex //重点1
+						,
+						success: function (layero) {
+							layer.setTop(layero); //重点2
+						}
+					});
+				});
+
+			})
+		})
+	</script>
+</body>
+
+</html>

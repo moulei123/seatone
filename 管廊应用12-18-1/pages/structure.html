@@ -1,0 +1,237 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-20 14:30:40
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-09 17:01:19
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>查看属性</title>
+		<link rel="stylesheet" href="../lib/layui/css/layui.css">
+		<style>
+			html,
+			body,
+			.layui-side {
+				width: 100%;
+				height: 100%;
+				background: #f2f2f2;
+			}
+
+			.slideTop {
+				height: 20px;
+				width: 100%;
+				background-color: #ccc;
+			}
+
+			.layui-form-item {
+				position: fixed;
+				width: 100%;
+				height: 50px;
+				z-index: 2;
+				background-color: #b98f35a9;
+			}
+
+			.layui-side {
+				/* margin-top: 50px; */
+			}
+
+
+			/* 滚动条样式 demo*/
+			.layui-side::-webkit-scrollbar {
+				/*滚动条整体样式*/
+				width: 2px;
+				/*高宽分别对应横竖滚动条的尺寸*/
+				height: 1px;
+			}
+
+			.layui-side::-webkit-scrollbar-thumb {
+				/*滚动条里面小方块*/
+				border-radius: 2px;
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				background: #ffffff;
+			}
+
+			.layui-side::-webkit-scrollbar-track {
+				/*滚动条里面轨道*/
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				border-radius: 10px;
+				background: #5266e9;
+			}
+
+			.search-tree {
+				margin: 10px;
+			}
+
+			.demo-tree {
+				margin: 10px;
+			}
+
+			.layui-layout-admin .layui-logo {
+				color: #fff;
+				font-weight: 700;
+				font-size: 18px;
+			}
+
+			.layui-tree-txt {
+				color: rgb(63, 63, 63);
+			}
+
+			.layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+				color: #dd963a;
+			}
+
+			.layui-input,
+			.layui-textarea {
+				width: 70%;
+				display: inline-block;
+
+			}
+
+			.layui-btn {
+				margin-bottom: 3px;
+				padding: 0 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 属性查看开始 -->
+		<div class="layui-side" id="slide">
+
+			<!-- 左侧tree -->
+			<div class="treeBox">
+				<div id="test1" class="demo-tree demo-tree-box"></div>
+			</div>
+
+		</div>
+
+
+		<script src="../lib/jquery.js"></script>
+		<script src="../lib/layui/layui.all.js"></script>
+		<!-- 属性查看结束 -->
+		<script>
+			// tree开始
+			var tree = layui.tree,
+				layer = layui.layer,
+				util = layui.util,
+				data1 = [{
+					title: '21Gs002',
+					id: 1,
+					checked: true,
+					children: [{
+						title: '20-21-gs002-es2j',
+						id: 1000
+					}, {
+						title: '30-21-gs002-es2j',
+						id: 1001
+					}, {
+						title: 'gate-pipe-20-21-gs002-es2j',
+						id: 1002
+					}]
+				}, {
+					title: 'weldolet-492',
+					id: 2,
+					children: [{
+						title: '21-39dw-111',
+						id: 2000
+					}, {
+						title: 'dfw3-dsq-222',
+						id: 2001
+					}]
+				}, {
+					title: 'weldolet-492',
+					id: 3,
+					children: [{
+						title: 'weldolet-492-111',
+						id: 3000
+					}, {
+						title: 'weldolet-492-222',
+						id: 3001
+					}]
+				}, {
+					title: 'dvew-xkk-xw-w',
+					id: 3,
+					children: [{
+						title: 'lkk-ss-wwe-111',
+						id: 3000
+					}, {
+						title: 'nkn-sxk-222',
+						id: 3001
+					}]
+				}, {
+					title: 'cklks-ccckw-xx',
+					id: 3,
+					children: [{
+						title: '-sjkjxf-111',
+						id: 3000
+					}, {
+						title: 'cklks-oko-222',
+						id: 3001
+					}]
+				}, {
+					title: 'mmm-cnws-xx',
+					id: 3,
+					children: [{
+						title: 'cnmn-skil-111',
+						id: 3000
+					}, {
+						title: 'wsklj-xxk-222',
+						id: 3001
+					}]
+				}, {
+					title: 'GR变换器',
+					id: 3,
+					children: [{
+						title: 'GP工艺气-111',
+						id: 3000
+					}, {
+						title: 'data-222',
+						id: 3001
+					}]
+				}, {
+					title: '管廊3',
+					id: 3,
+					children: [{
+						title: '管架3-111',
+						id: 3000
+					}, {
+						title: '管架3-222',
+						id: 3001
+					}]
+				}, {
+					title: '管廊3',
+					id: 3,
+					children: [{
+						title: '管架3-111',
+						id: 3000
+					}, {
+						title: '管架3-222',
+						id: 3001
+					}]
+				}]
+			tree.render({
+				elem: '#test1', //默认是点击节点可进行收缩
+				data: data1,
+				click: function(obj) {
+
+					console.log(obj.data.children)
+					if (obj.data.children) {
+						console.log(0)
+					} else(
+						$('.attr_view', window.parent.document).show()
+					)
+				}
+
+			});
+			// tree结束
+		</script>
+	</body>
+
+</html>

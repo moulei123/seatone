@@ -1,0 +1,28 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [{
+			"index": 1,
+			"mechineType": "管件",
+			"mechineName": "弯头",
+			"property": "ASTM/ASME A402 WPL3-WPL6",
+			"number": "5"
+		},
+		{
+			"index": 2,
+			"mechineType": "管件",
+			"mechineName": "管帽",
+			"property": "ASTM/ASME A402 WPL3-WPL6",
+			"number": "5"
+		},
+		{
+			"index": 3,
+			"mechineType": "管件",
+			"mechineName": "垫片",
+			"property": "ASTM/ASME A402 WPL3-WPL6",
+			"number": "5"
+		}
+		
+	]
+}

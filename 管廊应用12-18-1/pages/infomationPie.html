@@ -1,0 +1,105 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-11-26 12:13:19
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>属性信息</title>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css">
+	<style>
+		html,
+		body {
+			height: 98%;
+			margin: 0px;
+			/* padding: 0 20px; */
+			/* overflow: hidden; */
+		}
+
+		.info_tab {
+			width: calc(100% - 40px);
+			height: calc(100% - 40px);
+			padding: 20px;
+		}
+
+		.info_tab>div {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+			border-top: 1px solid #CCC;
+			border-left: 1px solid #CCC;
+			border-right: 1px solid #CCC;
+		}
+
+		.info_tab>div>div {
+			min-height: 40px;
+			line-height: 300%;
+			text-align: center;
+			border-right: 1px solid #CCC;
+		}
+
+		.info_tab>div>div:nth-child(odd) {
+			background-color: #F2F2F2;
+		}
+
+		.info_tab>div:nth-child(7) {
+			border-bottom: 1px solid #CCC;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="info_tab">
+		<table class="layui-table">
+		  <colgroup>
+		    <col width="150">
+		    <col width="200">
+		    <col>
+		  </colgroup>
+		  <thead>
+		    <tr>
+		      <th>属性名</th>
+		      <th>属性值</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td>管线号</td>
+		      <td>410VHS111</td>
+		
+		    </tr>
+		    <tr>
+		      <td>管段号</td>
+		      <td>410VHS111-jk</td>
+		    </tr>
+			<tr>
+			  <td>管段号</td>
+			  <td>410VHS111-jk</td>
+			</tr>
+			<tr>
+			  <td>管道级别</td>
+			  <td>1532-D-41000-PD-DW804-1414A</td>
+			</tr>
+			<tr>
+			  <td>主材质</td>
+			  <td>12Cr1MoVG</td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
+
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/layui/layui.all.js"></script>
+	<script>
+
+	</script>
+</body>
+
+</html>

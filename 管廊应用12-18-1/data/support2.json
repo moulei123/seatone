@@ -1,0 +1,67 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 1,
+      "username": "（SM）镇利化学中间罐区",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 2,
+      "username": "（民用液化气）炼厂至PO",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 3,
+      "username": "（SM）镇利化学中间罐区",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 4,
+      "username": "（污泥）乙烯净化水厂至污",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    },
+    {
+      "id": 5,
+      "username": "BE-03（苯）常压罐区E3至",
+      "sex": "",
+      "city": "",
+      "sign": "",
+      "experience": "",
+      "logins": "",
+      "wealth": "",
+      "classify": "液压",
+      "score": 57
+    }
+  ]
+}

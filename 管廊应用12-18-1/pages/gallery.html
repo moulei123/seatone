@@ -1,0 +1,177 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: yang_ft
+ * @Date: 2020-11-16 16:57:51
+ * @github: famensaodiseng
+ * @LastEditTime: 2020-12-16 15:16:20
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三维交互</title>
+  <link rel="stylesheet" href="../lib/layui/css/layui.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      /* padding: 0 20px; */
+      overflow: hidden;
+    }
+
+    .gallery-top {
+
+      width: 100%;
+      margin: 20px 0 0 20px;
+    }
+
+    .layui-table,
+    .layui-table-view {
+      margin: 0;
+    }
+
+    .gallery-bottom {
+      /* margin-top: 30px; */
+      height: calc(100vh - 100px);
+      width: 100%;
+      overflow: auto;
+
+    }
+
+    .layui-col-xs3 {
+      border: 1px solid #ccc;
+      text-align: center;
+      height: 100px;
+      line-height: 100px;
+      margin-right: 10px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .layui-input {
+      display: inline-block;
+      width: 200px;
+    }
+
+    .batchInt {
+      width: 350px;
+    }
+
+    .batchInt img {
+      width: 50%;
+      height: 20%;
+      transform: translate(45%, 0%);
+    }
+
+    .batchInt h3 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="gallery-top">
+    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入搜索内容" class="layui-input">
+    <button type="button" class="layui-btn layui-btn-normal " id="searchPrint"><i
+        class="layui-icon layui-icon-search"></i>搜索</button>
+    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入打印规则" class="layui-input">
+    <button type="button" class="layui-btn   layui-btn-normal " id="batchPrint">批量打印</button>
+    <button type="button" class="layui-btn   layui-btn-radius layui-btn-normal" id="setPrint"><i
+        class="layui-icon layui-icon-print"></i>打印设置</button> 
+  </div>-->
+  <div class="gallery-bottom">
+    <!-- <table class="layui-hide" id="threesTable"></table> -->
+    <table class="layui-table">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>属性名</th>
+          <th>属性值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>名称</td>
+          <td>Flang-48973</td>
+        </tr>
+        <tr>
+          <td>模版类型</td>
+          <td>2P3Dkjkj-jk</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script id="batchInt" type="text/html">
+    <div class="batchInt">
+      <img src="../images/batchInt.gif" alt="">
+        <h3>正在打印中，请耐心等待...</h3>
+    </div>
+  </script>
+  <script src="../lib/jquery.js"></script>
+  <script src="../lib/layui/layui.all.js"></script>
+  <script>
+    $(function () {
+      // 下面表格开始
+      layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+          elem: '#threesTable'
+          , url: '../data/user.json'
+          , toolbar: false
+          , type: 'checkbox'
+          , height: 'full-100'
+          , skin: 'line' //行边框风格
+          , even: true //开启隔行背景
+          , defaultToolbar: ['filter', 'print', 'exports']
+          , cols: [[
+            { field: '', type: 'checkbox' }
+            , { field: 'id', width: 80, title: '管线号', sort: true }
+            , { field: 'username', width: 80, title: '管段号' }
+            , { field: 'sex', width: 80, title: '管道级别', sort: true }
+            , { field: 'city', width: 80, title: '材料等级' }
+            , { field: 'sign', title: '设计温度', minWidth: 150 }
+            , { field: 'experience', width: 80, title: '设计压力', sort: true }
+            , { field: 'score', width: 80, title: '壁厚', sort: true }
+            , { field: 'classify', width: 80, title: '壁厚等级' }
+            , { field: 'wealth', width: 135, title: '试验介质', sort: true }
+          ]]
+          , page: true
+          , limit: 10   //默认十条数据一页
+          , where: {
+            status: 0
+          }
+          , limits: [10, 20, 30, 50]  //数据分页条
+        });
+      });
+      // 表格结束
+      $('#singlePrint').click(function () {
+        layer.msg('单个打印中...', { icon: 1 });
+      })
+      // 批量打印开始
+      $('#batchPrint').click(function () {
+        layer.open({
+          type: 1,
+          title: false,
+          shade: 0,
+          id: 'printMsg',
+          closeBtn: 1,
+          // time: 2000,
+          content: $('#batchInt').html()
+        });
+      })
+      // 批量打印结束
+    })
+  </script>
+</body>
+
+</html>
